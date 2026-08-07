@@ -11,6 +11,25 @@ jobs:
     defaults:
       run:
         working-directory: backend
+    services:
+      # For DB-backed tests (auth package onward) — gated on
+      # TEST_DATABASE_URL so `go test` without it (local dev with no
+      # Postgres running) skips them instead of failing.
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U test"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 5
+    env:
+      TEST_DATABASE_URL: "postgres://test:test@localhost:5432/test?sslmode=disable"
     steps:
       - uses: actions/checkout@v4
 

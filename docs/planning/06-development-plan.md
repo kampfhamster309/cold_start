@@ -38,11 +38,11 @@ Gets a running, empty skeleton of every service talking to every other service, 
 - [x] **INFRA-3**: Postgres schema migration tooling (e.g. `golang-migrate` or `sqlc`-paired migrations) + base `docker-compose.yml` wiring `caddy`, `app-frontend`, `app-backend`, `postgres` (architecture §4). *Done when:* a fresh clone runs one command to a working empty stack.
 - [x] **INFRA-4**: CI: lint + build + test for both Go and Next.js on every push. Not designed elsewhere in the planning docs — baseline engineering hygiene, not a product decision.
 
-## 3. Epic 1 — Auth & RBAC Foundation
+## 3. Epic 1 — Auth & RBAC Foundation (1/6 done)
 
 Blocks everything else — every other module's data access goes through the grants this epic builds (tech-stack §6, architecture §2.2/§5).
 
-- [ ] **AUTH-1**: `users`, `sessions` tables + session cookie issuance. *Done when:* a session can be created and validated server-side.
+- [x] **AUTH-1**: `users`, `sessions` tables + session cookie issuance. *Done when:* a session can be created and validated server-side.
 - [ ] **AUTH-2**: `(user, role, resource_type, resource_id)` grants table, with `resource_type` enum (`global`, `doc_space`, `repo_connection`, `onboarding_hire`) and middleware that checks a grant before any protected request proceeds (tech-stack §6, architecture §5). *Done when:* a request without the right grant is rejected, one with it isn't — tested against the `global` sentinel only, since Phase 0's UI exposes global roles only.
 - [ ] **AUTH-3**: OIDC client integration. **Blocked on an open decision** — which reference IdP to validate against first (Keycloak / Okta / Azure AD / Google Workspace) isn't picked yet; see [04-open-items.md](04-open-items.md) §1. Pick one before starting this ticket rather than guessing.
 - [ ] **AUTH-4**: Magic-link auth: request-link endpoint, SMTP delivery via operator-supplied relay (tech-stack §6, architecture §4), single-use verify-and-consume endpoint. No standalone password path — this is the only non-OIDC login route. *Done when:* a full request→email→click→session round trip works against a local test SMTP server.
