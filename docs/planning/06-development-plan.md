@@ -29,14 +29,14 @@ flowchart TB
     SEARCH --> OPS
 ```
 
-## 2. Epic 0 — Infrastructure Scaffolding (3/4 done)
+## 2. Epic 0 — Infrastructure Scaffolding (4/4 done)
 
 Gets a running, empty skeleton of every service talking to every other service, before any feature logic exists.
 
 - [x] **INFRA-1**: Go module scaffolding for `app-backend` (tech-stack §2) — `chi`/thin router, config loading, health-check endpoint. *Done when:* `docker-compose up` serves a 200 from a health endpoint.
 - [x] **INFRA-2**: Next.js scaffolding for `app-frontend` (tech-stack §1) — App Router, standalone build output, talks to `app-backend` over REST only (architecture §2.1). *Done when:* frontend renders a page that round-trips a call to the backend health endpoint.
 - [x] **INFRA-3**: Postgres schema migration tooling (e.g. `golang-migrate` or `sqlc`-paired migrations) + base `docker-compose.yml` wiring `caddy`, `app-frontend`, `app-backend`, `postgres` (architecture §4). *Done when:* a fresh clone runs one command to a working empty stack.
-- [ ] **INFRA-4**: CI: lint + build + test for both Go and Next.js on every push. Not designed elsewhere in the planning docs — baseline engineering hygiene, not a product decision.
+- [x] **INFRA-4**: CI: lint + build + test for both Go and Next.js on every push. Not designed elsewhere in the planning docs — baseline engineering hygiene, not a product decision.
 
 ## 3. Epic 1 — Auth & RBAC Foundation
 
