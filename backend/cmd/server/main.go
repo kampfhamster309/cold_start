@@ -7,8 +7,8 @@ import (
 	"os"
 	"time"
 
-	"onboarding-hub/backend/internal/api"
-	"onboarding-hub/backend/internal/config"
+	"cold_start/backend/internal/api"
+	"cold_start/backend/internal/config"
 )
 
 func main() {

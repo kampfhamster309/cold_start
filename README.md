@@ -1,4 +1,4 @@
-# Onboarding Hub
+# cold_start
 
 A self-hosted, web-based onboarding platform for software engineering teams. It connects to code repositories to surface "who to ask" expertise and documentation-staleness signals, provides a git-backed store for non-code documentation editable from a web UI, and includes an onboarding-plan/checklist feature for new hires.
 

@@ -1,4 +1,4 @@
-# Onboarding Hub — Open Items
+# cold_start — Open Items
 
 > Single tracker for everything still undecided or deliberately deferred across [01-overview.md](01-overview.md), [02-tech-stack.md](02-tech-stack.md), and [03-architecture.md](03-architecture.md). Those docs previously carried their own scattered "open questions" lists, which drifted out of sync with each other more than once during review — this file is now the only place that tracks status, so a decision only needs to be resolved in one place. The three docs still explain *why* each item exists; this file tracks *whether it's resolved yet*.
 

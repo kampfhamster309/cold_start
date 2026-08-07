@@ -1,4 +1,4 @@
-# Onboarding Hub — Development Plan (Phase 1 — Freshness & Multi-Source)
+# cold_start — Development Plan (Phase 1 — Freshness & Multi-Source)
 
 > Scope per overview §6, Phase 1: doc-staleness detection, additional code hosts, search across both doc sources. Assumes [06-development-plan.md](06-development-plan.md) (Phase 0) is complete — every ticket here builds on a Phase 0 component rather than re-describing it. Ticket IDs are prefixed `P1-` to keep them visually distinct from Phase 0's, even out of context.
 

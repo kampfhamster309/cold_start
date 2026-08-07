@@ -7,7 +7,7 @@ import "./globals.css";
 // instead — no external dependency, no build-time network requirement.
 
 export const metadata: Metadata = {
-  title: "Onboarding Hub",
+  title: "cold_start",
   description: "Self-hosted onboarding platform",
 };
 

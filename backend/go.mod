@@ -1,4 +1,4 @@
-module onboarding-hub/backend
+module cold_start/backend
 
 go 1.22
 

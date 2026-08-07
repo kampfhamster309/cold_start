@@ -1,4 +1,4 @@
-# Onboarding Hub — Development Plan (Phase 0 / MVP)
+# cold_start — Development Plan (Phase 0 / MVP)
 
 > Scoped to Phase 0 only (overview §6). Phase 1/2 features already have starting designs — see [04-open-items.md](04-open-items.md) §2 — but aren't ticketed here; do that when Phase 0 ships. Every ticket below is grounded in a specific decision already made in [02-tech-stack.md](02-tech-stack.md) or [03-architecture.md](03-architecture.md); where a ticket can't be fully specified without a decision that's still open, it says so and links [04-open-items.md](04-open-items.md) rather than guessing.
 

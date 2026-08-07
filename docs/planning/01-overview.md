@@ -1,6 +1,6 @@
-# Onboarding Hub — Planning Overview
+# cold_start — Planning Overview
 
-> Working title: **Onboarding Hub**. Rename freely once a real product name exists — this document uses it as a placeholder only.
+> Preliminary project name: **cold_start**. Still open to changing later if a more product-facing name emerges — this is what the repository and codebase currently use.
 
 ## 1. Problem Statement
 
@@ -93,7 +93,7 @@ This project is a self-hosted, web-based onboarding platform that:
 
 All four questions originally posed here have since been resolved by decisions made in [02-tech-stack.md](02-tech-stack.md) and [03-architecture.md](03-architecture.md). Kept as a decision log rather than deleted, since it's useful provenance for why each was decided the way it was.
 
-- ~~Which code hosts must be supported at launch?~~ — **GitLab self-managed first**, not GitHub, revised after review: it's the standard self-hosted code host for the enterprise segment this product targets, and self-hosted GitLab on the same internal network as the Onboarding Hub sidesteps the public-reachability problems (webhooks, TLS/ACME) that GitHub.com introduces for a genuinely self-hosted deployment. GitHub.com and generic self-hosted git follow behind it, Bitbucket stays out of scope. See tech-stack §5.
+- ~~Which code hosts must be supported at launch?~~ — **GitLab self-managed first**, not GitHub, revised after review: it's the standard self-hosted code host for the enterprise segment this product targets, and self-hosted GitLab on the same internal network as cold_start sidesteps the public-reachability problems (webhooks, TLS/ACME) that GitHub.com introduces for a genuinely self-hosted deployment. GitHub.com and generic self-hosted git follow behind it, Bitbucket stays out of scope. See tech-stack §5.
 - ~~How much of "non-code doc versioning" needs to be a *real* git repo vs. an internal version history model?~~ — a real repo: an in-process `go-git`-managed bare repo, owned entirely by the app, no separate git server. See tech-stack §4.
 - ~~Self-hosted only, or should hosted/managed deployment be considered later?~~ — self-hosted only for v1 (docker-compose as the default target), consistent with this doc's own §3 non-goal ruling out multi-tenant SaaS at v1. See tech-stack §8.
 - ~~Depth of the permissions model needed at MVP?~~ — viewer/editor/admin roles, modeled from day one as `(user, role, scope)` tuples so finer-grained scoping in Phase 2 doesn't require a data-model migration. See tech-stack §6.

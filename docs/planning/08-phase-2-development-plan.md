@@ -1,4 +1,4 @@
-# Onboarding Hub — Development Plan (Phase 2 — Comfort & Scale)
+# cold_start — Development Plan (Phase 2 — Comfort & Scale)
 
 > Scope per overview §6, Phase 2. Every epic below already has a starting design in [03-architecture.md](03-architecture.md) §6 and [04-open-items.md](04-open-items.md) §2 — this document tickets the reasoning already done there, it doesn't redo it. Assumes Phase 0 ([06-development-plan.md](06-development-plan.md)) and Phase 1 ([07-phase-1-development-plan.md](07-phase-1-development-plan.md)) are complete.
 

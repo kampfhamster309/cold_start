@@ -28,7 +28,7 @@ export default async function Home() {
 
   return (
     <main style={{ fontFamily: "system-ui, sans-serif", padding: "2rem" }}>
-      <h1>Onboarding Hub</h1>
+      <h1>cold_start</h1>
       <p>app-frontend → app-backend round trip (INFRA-2):</p>
       {health.ok ? (
         <p>

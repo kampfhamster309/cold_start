@@ -1,4 +1,4 @@
-# Onboarding Hub — Architecture
+# cold_start — Architecture
 
 > Companion to [01-overview.md](01-overview.md) (vision/scope) and [02-tech-stack.md](02-tech-stack.md) (technology picks). This document describes how the chosen stack is assembled into a system: components, data flow, storage layout, and deployment topology. It also resolves the tech-stack doc's open questions where an answer is needed to describe the architecture coherently, and defers the rest explicitly.
 
@@ -65,7 +65,7 @@ Single database for MVP, holding:
 
 ### 2.4 Doc-store bare repo(s) (volume, via go-git)
 
-Repo layout (resolved during review, see [04-open-items.md](04-open-items.md) §3): **one bare repo per company instance at MVP**, not per-team/per-space. Rationale: the onboarding-hub instance is already single-tenant per company (non-goal in the overview), so a single repo covers the whole non-code doc corpus; splitting by team adds operational complexity (multiple repos to GC, back up, and reason about for cross-team search) without a concrete MVP requirement driving it. Structured content types (team page, process, FAQ) are stored as files with YAML front-matter encoding the type and metadata, under a directory convention (e.g. `/teams/<slug>.md`, `/processes/<slug>.md`) — human-inspectable if the repo is ever exported via `git bundle`, per the tech-stack doc's portability point. Revisit per-space repos only if cross-company multi-tenancy (explicitly deferred in the overview) becomes real.
+Repo layout (resolved during review, see [04-open-items.md](04-open-items.md) §3): **one bare repo per company instance at MVP**, not per-team/per-space. Rationale: the cold_start instance is already single-tenant per company (non-goal in the overview), so a single repo covers the whole non-code doc corpus; splitting by team adds operational complexity (multiple repos to GC, back up, and reason about for cross-team search) without a concrete MVP requirement driving it. Structured content types (team page, process, FAQ) are stored as files with YAML front-matter encoding the type and metadata, under a directory convention (e.g. `/teams/<slug>.md`, `/processes/<slug>.md`) — human-inspectable if the repo is ever exported via `git bundle`, per the tech-stack doc's portability point. Revisit per-space repos only if cross-company multi-tenancy (explicitly deferred in the overview) becomes real.
 
 Conflict resolution (resolved during review): MVP uses **optimistic locking** — the editor UI carries the base commit hash it was loaded from; a save request whose base hash no longer matches `HEAD` is rejected with a "this page changed, reload to see the latest version" response rather than silently overwritten or auto-merged. A merge UI is explicitly deferred; it's only worth building once concurrent edits on the same page are observed to be common in practice.
 

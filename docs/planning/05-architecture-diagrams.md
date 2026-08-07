@@ -1,4 +1,4 @@
-# Onboarding Hub — Architecture Diagrams
+# cold_start — Architecture Diagrams
 
 > Companion to [03-architecture.md](03-architecture.md) — every diagram here is a direct visualization of a section there; component names, module names, and flow steps match exactly so the two stay easy to cross-check. Where a diagram and the prose ever disagree, the prose in 03-architecture.md is authoritative and this file has drifted and needs fixing.
 
