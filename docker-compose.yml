@@ -11,3 +11,17 @@ services:
       interval: 10s
       timeout: 3s
       retries: 3
+
+  app-frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      # Internal docker-compose service DNS name, not localhost — the
+      # health-check fetch happens server-side inside this container
+      # (architecture §2.1), on the same docker network as app-backend.
+      BACKEND_INTERNAL_URL: "http://app-backend:8080"
+    depends_on:
+      app-backend:
+        condition: service_healthy
