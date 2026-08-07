@@ -1,4 +1,20 @@
 services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      # Local-dev defaults. A real deployment should override these via
+      # an env file or secrets, not edit this file (OPS-4 documents that).
+      POSTGRES_USER: cold_start
+      POSTGRES_PASSWORD: cold_start
+      POSTGRES_DB: cold_start
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cold_start"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
   app-backend:
     build:
       context: ./backend
@@ -6,6 +22,10 @@ services:
       - "8080:8080"
     environment:
       PORT: "8080"
+      DATABASE_URL: "postgres://cold_start:cold_start@postgres:5432/cold_start?sslmode=disable"
+    depends_on:
+      postgres:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "/server", "-healthcheck"]
       interval: 10s
@@ -25,3 +45,18 @@ services:
     depends_on:
       app-backend:
         condition: service_healthy
+
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    depends_on:
+      app-backend:
+        condition: service_healthy
+      app-frontend:
+        condition: service_started
+
+volumes:
+  pg-data:

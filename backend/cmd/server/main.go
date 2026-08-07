@@ -9,6 +9,7 @@ import (
 
 	"cold_start/backend/internal/api"
 	"cold_start/backend/internal/config"
+	"cold_start/backend/internal/db"
 )
 
 func main() {
@@ -21,7 +22,18 @@ func main() {
 		os.Exit(runHealthcheck(cfg))
 	}
 
-	router := api.NewRouter()
+	conn, err := db.Connect(cfg.DatabaseURL)
+	if err != nil {
+		log.Fatalf("connect to database: %v", err)
+	}
+	defer conn.Close()
+
+	log.Print("running database migrations")
+	if err := db.Migrate(conn); err != nil {
+		log.Fatalf("migrate database: %v", err)
+	}
+
+	router := api.NewRouter(conn)
 
 	log.Printf("app-backend listening on :%s", cfg.Port)
 	if err := http.ListenAndServe(":"+cfg.Port, router); err != nil {

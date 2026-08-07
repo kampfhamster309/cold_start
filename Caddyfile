@@ -1,0 +1,12 @@
+# Minimal reverse proxy for local/dev use (INFRA-3). Plain HTTP on :80 —
+# the real TLS-mode decision (public ingress vs. DNS-01 vs. internal CA,
+# tech-stack §8) is OPS-2's job, not this ticket's.
+:80 {
+	handle_path /api/* {
+		reverse_proxy app-backend:8080
+	}
+
+	handle {
+		reverse_proxy app-frontend:3000
+	}
+}
