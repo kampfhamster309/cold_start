@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS grants;
+DROP TYPE IF EXISTS grant_role;
+DROP TYPE IF EXISTS resource_type;
